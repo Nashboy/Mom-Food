@@ -61,8 +61,8 @@ class Ingredient(ndb.Model):
     unit = ndb.StringProperty(required=True)
 
 # Method Objects
-class Method(ndb.Model):
-    content = ndb.StringProperty(repeating=True)
+# class Method(ndb.Model):
+#     content = ndb.StringProperty(repeating=True)
 
 # ======== Links =========
 app = webapp2.WSGIApplication([
