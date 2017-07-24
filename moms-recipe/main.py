@@ -29,8 +29,10 @@ jinja_environment = jinja2.Environment(loader =
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/main.html')
-
-        self.response.write('Hello world!')
+        temp = {
+        
+        }
+        self.response.write(template.render(temp))
 
 class RecipeHandler(webapp2.RequestHandler):
     def get(self):
