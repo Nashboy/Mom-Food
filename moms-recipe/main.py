@@ -46,6 +46,13 @@ class FoodHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(temp))
 
+class ContactHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templats/contact.html')
+        temp = {
+
+        }
+        self.response.write(template.render(temp))
 
 # ======== Objects ======
 # List of Foods Objects
@@ -69,5 +76,5 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/food', FoodHandler),
     ('/recipe', RecipeHandler),
-    ('/contact', ContactUs)
+    ('/contact', ContactHandler)
 ], debug=True)
