@@ -26,11 +26,11 @@ jinja_environment = jinja2.Environment(loader =
 
 
 
-class MainHandler(webapp2.RequestHandler):
+class IndexHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('templates/main.html')
+        template = jinja_environment.get_template('templates/index.html')
         temp = {
-        
+
         }
         self.response.write(template.render(temp))
 
@@ -75,7 +75,7 @@ class Ingredient(ndb.Model):
 
 # ======== Links =========
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', IndexHandler),
     ('/food', FoodHandler),
     ('/recipe', RecipeHandler),
     ('/contact', ContactHandler)
