@@ -43,9 +43,14 @@ class RecipeHandler(webapp2.RequestHandler):
 class FoodHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/foods.html')
-        temp = {
 
+        temp = {
+            "recipe_list": Food.query().fetch(), #all compliments
         }
+        logging.warning("=================== ALL Foods ===================")
+            for k in temp["recipe_list"]:
+                print k.get()
+        logging.warning("=================== END Foods ===================")
         self.response.write(template.render(temp))
 
 class ContactHandler(webapp2.RequestHandler):
@@ -58,20 +63,24 @@ class ContactHandler(webapp2.RequestHandler):
 
 # ======== Objects ======
 # List of Foods Objects
+# class Recipe(ndb.Model):
+#     food_list = ndb.KeyProperty("Food", repeated=True)
+#     nameRecipe = ndb.StringProperty(required=True)
+
 class Food(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    ingredient_list = ndb.KeyProperty(required=True)
-    method_list = ndb.KeyProperty(required=True)
+    nameFood = ndb.StringProperty(required=True)
+    ingredient_list = ndb.KeyProperty("Ingredient", repeated=True)
+    method_list = ndb.KeyProperty("Method", repeated=True)
 
 # Ingredient Objects
 class Ingredient(ndb.Model):
-    name = ndb.StringProperty(required=True)
+    nameIngredient = ndb.StringProperty(required=True)
     number = ndb.IntegerProperty(required=True)
     unit = ndb.StringProperty(required=True)
 
 # Method Objects
-# class Method(ndb.Model):
-#     content = ndb.StringProperty(repeating=True)
+class Method(ndb.Model):
+    content = ndb.TextProperty(required=True)
 
 # ======== Links =========
 app = webapp2.WSGIApplication([
