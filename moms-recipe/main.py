@@ -50,7 +50,7 @@ class FoodHandler(webapp2.RequestHandler):
 
 class ContactHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('templats/contact.html')
+        template = jinja_environment.get_template('templates/contact.html')
         temp = {
 
         }
