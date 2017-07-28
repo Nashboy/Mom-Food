@@ -47,10 +47,10 @@ class FoodHandler(webapp2.RequestHandler):
         temp = {
             "recipe_list": Food.query().fetch(), #all compliments
         }
-        logging.warning("=================== ALL Foods ===================")
-            for k in temp["recipe_list"]:
-                print k.get()
-        logging.warning("=================== END Foods ===================")
+        # logging.warning("=================== ALL Foods ===================")
+        #     for k in temp["recipe_list"]:
+        #         print k.get()
+        # logging.warning("=================== END Foods ===================")
         self.response.write(template.render(temp))
 
 class ContactHandler(webapp2.RequestHandler):
