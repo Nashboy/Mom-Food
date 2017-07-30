@@ -45,7 +45,7 @@ class FoodHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/foods.html')
 
         temp = {
-            "recipe_list": Food.query().fetch(), #all compliments
+            "recipe_list": Food.query().fetch(), #all foods
         }
         # logging.warning("=================== ALL Foods ===================")
         #     for k in temp["recipe_list"]:
