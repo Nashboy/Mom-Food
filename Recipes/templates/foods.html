@@ -21,15 +21,15 @@
     </header>
 
     <div class="row">
-      <div class="col foodName">
-
-      </div>
-      <div class="col">
-
-      </div>
-      <div class="col">
-
-      </div>
+      <table>
+        {% for foods in recipe_list %}
+        <tr>
+          <td>
+            {{foods.get().nameFood}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
 
     <footer>

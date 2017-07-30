@@ -27,9 +27,9 @@
 
     <div class="row">
       <table>
-        {% for recipe_obj in recipe_list %}
+        {% for food in recipe_list %}
         <tr>
-          <td>{{recipe_obj.get().nameFood}}</td>
+          <td>{{food.get().nameFood}}</td>
         </tr>
         {% endfor %}
       </table>
