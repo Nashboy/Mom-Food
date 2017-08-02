@@ -1,5 +1,5 @@
 header {
-  background: #999;
+  background: #010101;
   color: white;
   margin: 0;
 }
@@ -11,7 +11,11 @@ header h1 {
 
 body {
   margin: 0;
-  background: #FF7F50;
+  background: #010101;
+}
+
+footer p{
+  color: white;
 }
 
 nav {
@@ -26,7 +30,7 @@ nav ul {
 
 
 nav ul li {
-  background: orange;
+  background: #D9867D;
   list-style-type: none;
   display: inline-block;
   color: #777;
@@ -57,7 +61,7 @@ nav ul li a {
 
 .row {
   margin: 0 auto 20px auto;
-  background: orange;
+  background: #D9867D;
 }
 
 .row .col {

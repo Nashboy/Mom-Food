@@ -29,14 +29,14 @@
       <table>
         {% for food in recipe_list %}
         <tr>
-          <td>{{food.get().nameFood}}</td>
+          <td><a href="/recipe">{{food.nameFood}}</a></td>
         </tr>
         {% endfor %}
       </table>
     </div>
 
     <footer>
-      © 2017 Mom's Food
+      <p>© 2017 Mom's Food</p>
     </footer>
   </body>
 

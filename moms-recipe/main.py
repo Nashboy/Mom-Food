@@ -37,7 +37,9 @@ class IndexHandler(webapp2.RequestHandler):
 class RecipeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/recipe.html')
-        ing_list = Ingredient.query().filter()
+        temp = {
+        
+        }
         self.response.write(template.render(temp))
 
 class FoodHandler(webapp2.RequestHandler):
@@ -69,8 +71,8 @@ class ContactHandler(webapp2.RequestHandler):
 
 class Food(ndb.Model):
     nameFood = ndb.StringProperty(required=True)
-    ingredient_list = ndb.KeyProperty("Ingredient", repeated=True)
-    method_list = ndb.KeyProperty("Method", repeated=True)
+    ingredient_list = ndb.KeyProperty("Ingredient", repeated=False)
+    method_list = ndb.KeyProperty("Method", repeated=False)
 
 # Ingredient Objects
 class Ingredient(ndb.Model):
@@ -81,6 +83,31 @@ class Ingredient(ndb.Model):
 # Method Objects
 class Method(ndb.Model):
     content = ndb.TextProperty(required=True)
+
+
+# Adding entities To work with
+flour = Ingredient()
+flour.populate(
+    nameIngredient = 'flour',
+    number = 12,
+    unit = 'lbs'
+)
+flour_key = flour.put()
+
+tip = Method()
+tip.populate(
+    content = "Method Example"
+)
+tip_key = tip.put()
+
+cake = Food()
+cake.populate(
+    nameFood='Cake',
+    ingredient_list = flour_key,
+    method_list = tip_key)
+
+cake_key = cake.put()
+
 
 # ======== Links =========
 app = webapp2.WSGIApplication([
