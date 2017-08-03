@@ -37,9 +37,22 @@ class IndexHandler(webapp2.RequestHandler):
 class RecipeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/recipe.html')
+        # This is unnessary (refering to chosen food list) but I dont know all the commands to go straight
+        # to chosen_food off the bat
+        chosen_food_list = Food.query().filter(Food.nameFood == self.request.get("foodName")).fetch()
+        logging.info(chosen_food_list)
+        chosen_food = chosen_food_list[0]
+        logging.info(chosen_food)
+
+    # def post(self):
+    #     Food.query().filter(Food.nameFood == current_food.nameFood()).get()
         temp = {
-        
+            "ingredients" : chosen_food.ingredient_list,
+
+            "methods" : chosen_food.method_list
         }
+        logging.info(temp),
+        logging.info(chosen_food.ingredient_list[0].get().nameIngredient)
         self.response.write(template.render(temp))
 
 class FoodHandler(webapp2.RequestHandler):
@@ -71,8 +84,8 @@ class ContactHandler(webapp2.RequestHandler):
 
 class Food(ndb.Model):
     nameFood = ndb.StringProperty(required=True)
-    ingredient_list = ndb.KeyProperty("Ingredient", repeated=False)
-    method_list = ndb.KeyProperty("Method", repeated=False)
+    ingredient_list = ndb.KeyProperty("Ingredient", repeated=True)
+    method_list = ndb.KeyProperty("Method", repeated=True)
 
 # Ingredient Objects
 class Ingredient(ndb.Model):
@@ -87,6 +100,15 @@ class Method(ndb.Model):
 
 # Adding entities To work with
 flour = Ingredient()
+sugar = Ingredient()
+
+sugar.populate(
+    nameIngredient = 'sugar',
+    number = 5,
+    unit = 'teaspoons'
+)
+sugar_key = sugar.put()
+
 flour.populate(
     nameIngredient = 'flour',
     number = 12,
@@ -103,8 +125,8 @@ tip_key = tip.put()
 cake = Food()
 cake.populate(
     nameFood='Cake',
-    ingredient_list = flour_key,
-    method_list = tip_key)
+    ingredient_list = [flour_key, sugar_key],
+    method_list = [tip_key])
 
 cake_key = cake.put()
 

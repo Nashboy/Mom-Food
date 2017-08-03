@@ -3,7 +3,7 @@
 
   <head>
     <title>Mom's Food</title>
-    <link rel="stylesheet" href="../stylesheets/index.css">
+    <link rel="stylesheet" href="../stylesheets/recipe.css">
     <link rel="stylesheet" href="../stylesheets/general.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Slabo+27px|Source+Sans+Pro" rel = "stylesheet">
   </head>
@@ -21,43 +21,36 @@
     </header>
 
     <div>
-
-      <div class="row">
-          <h2 class="head font2">Welcome to my Mom's Cooking Page!</h2>
-      </div>
-
-      <div class="row">
-        <div class="description font1">
-          <h4>My mom, Panzy Harvey, has been cooking since she was 12 with a passion for
-          making the best food in her home. Now that she is a professional she asked me to
-          make a website documenting her recipes for the world to enjoy!</h4>
-        </div>
+      <div class="foodDisplay">
+        <img src="" alt="Food Image">
       </div>
 
       <div class = "row">
-        <h2 class = "font2">Featured Dishes</h2>
-        <div href = "" class = "featured">
-          <h3 class = "font1 foodName">Deluxe Pizza</h3>
-          <img class = "foodImg" alt = "Image of Pizza" src = " "></img>
+
+        <!-- Ingredient List -->
+        <div>
+          <h2 class = "font2">Ingredients</h2>
+          <table>
+            {% for ingredient in ingredients %}
+            <tr>
+              <td>{{ingredient.get().nameIngredient}}</td>
+              <td>{{ingredient.get().number}}</td>
+              <td>{{ingredient.get().unit}}</td>
+            </tr>
+            {% endfor %}
+          </table>
         </div>
 
-        <div href = "" class = "featured">
-          <h3 class = "font1 foodName">Food 2</h3>
-          <img class = "foodImg" alt = "Image of Food 2" src = " "></img>
-        </div>
-
-        <div href = "" class = "featured">
-          <h3 class = "font1 foodName">Food 3</h3>
-          <img class = "foodImg" alt = "Image of Food 3" src = " "></img>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="left name">
-          Name of food 2
-        </div>
-        <div class="right image">
-          Image
+        <!-- Method List -->
+        <div>
+          <h2 class = "font2">Methods</h2>
+          <table>
+            {% for method in methods %}
+            <tr>
+              <td>{{method.get().content}}</td>
+            </tr>
+            {% endfor %}
+          </table>
         </div>
       </div>
 

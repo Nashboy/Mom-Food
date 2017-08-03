@@ -29,7 +29,7 @@
       <table>
         {% for food in recipe_list %}
         <tr>
-          <td><a href="/recipe">{{food.nameFood}}</a></td>
+          <td><a href="/recipe?foodName={{food.nameFood}}">{{food.nameFood}}</a></td>
         </tr>
         {% endfor %}
       </table>
