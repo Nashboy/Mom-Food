@@ -30,7 +30,7 @@ nav ul {
 
 
 nav ul li {
-  background: #D9867D;
+  background: #F59111;
   list-style-type: none;
   display: inline-block;
   color: #777;
@@ -61,7 +61,7 @@ nav ul li a {
 
 .row {
   margin: 0 auto 20px auto;
-  background: #D9867D;
+  background: #F59111;
 }
 
 .row .col {
@@ -94,13 +94,13 @@ nav ul li a {
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
-  background-color: #fff;
+  background-color: #999;
 }
 
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
+  background-color: #999;
   transition: box-shadow .25s;
   border-radius: 2px;
 }

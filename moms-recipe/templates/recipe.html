@@ -20,7 +20,7 @@
       </nav>
     </header>
 
-    <div>
+    <div class = "row">
       <div class="foodDisplay">
         <img src="" alt="Food Image">
       </div>
@@ -28,12 +28,12 @@
       <div class = "row">
 
         <!-- Ingredient List -->
-        <div>
+        <div class = "Ingredientlist card">
           <h2 class = "font2">Ingredients</h2>
           <table>
             {% for ingredient in ingredients %}
-            <tr>
-              <td>{{ingredient.get().nameIngredient}}</td>
+            <tr class = "font1">
+              <td><h3>{{ingredient.get().nameIngredient}}</h3></td>
               <td>{{ingredient.get().number}}</td>
               <td>{{ingredient.get().unit}}</td>
             </tr>
@@ -42,11 +42,11 @@
         </div>
 
         <!-- Method List -->
-        <div>
+        <div class = "Methodlist card">
           <h2 class = "font2">Methods</h2>
           <table>
             {% for method in methods %}
-            <tr>
+            <tr class = "font1">
               <td>{{method.get().content}}</td>
             </tr>
             {% endfor %}
