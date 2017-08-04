@@ -18,6 +18,7 @@ import webapp2
 import os
 import jinja2
 from google.appengine.ext import ndb
+import mimetypes
 import random
 import logging
 
@@ -96,6 +97,10 @@ class Ingredient(ndb.Model):
 # Method Objects
 class Method(ndb.Model):
     content = ndb.TextProperty(required=True)
+
+class Images(ndb.Model):
+    file_name = ndb.StringProperty(required=True)
+    blob = ndb.BlobProperty(required=True)
 
 
 # Adding entities To work with

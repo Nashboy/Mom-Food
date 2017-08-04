@@ -64,12 +64,6 @@ nav ul li a {
   background: #F59111;
 }
 
-.row .col {
-  float: left;
-  box-sizing: border-box;
-  padding: 0 0.75rem;
-  min-height: 1px;
-}
 
 .featured {
   padding: 4% 0 2% 0;

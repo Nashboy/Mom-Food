@@ -22,14 +22,14 @@
 
     <div class = "row">
       <img src="" alt="">
-      <h3>List Of Foods</h3>
+      <h2 class = "font2">List Of Foods</h2>
     </div>
 
     <div class="row">
       <table>
         {% for food in recipe_list %}
         <tr>
-          <td><a href="/recipe?foodName={{food.nameFood}}">{{food.nameFood}}</a></td>
+          <td><a class = "font2" href="/recipe?foodName={{food.nameFood}}">{{food.nameFood}}</a></td>
         </tr>
         {% endfor %}
       </table>

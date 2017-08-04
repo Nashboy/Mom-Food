@@ -3,6 +3,7 @@
 
   <head>
     <title>Mom's Food</title>
+    <!-- <link rel="stylesheet" href="../stylesheets/materialize.css"> -->
     <link rel="stylesheet" href="../stylesheets/recipe.css">
     <link rel="stylesheet" href="../stylesheets/general.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Slabo+27px|Source+Sans+Pro" rel = "stylesheet">
@@ -29,13 +30,21 @@
 
         <!-- Ingredient List -->
         <div class = "Ingredientlist card">
-          <h2 class = "font2">Ingredients</h2>
+          <!-- <h2 class = "font2">Ingredients</h2> -->
           <table>
+            <tr>
+              <td colspan="4" style="border:none;text-align:center;">
+                <span style="font-size:24px;">
+                  <h2 class = "font2 hed">Ingredients</h2>
+                </span>
+              </td>
+            </tr>
             {% for ingredient in ingredients %}
             <tr class = "font1">
-              <td><h3>{{ingredient.get().nameIngredient}}</h3></td>
-              <td>{{ingredient.get().number}}</td>
-              <td>{{ingredient.get().unit}}</td>
+              <td colspan="" class = "hed"><h1> . </h1></td>
+              <td colspan="" class = "info"><h3>{{ingredient.get().nameIngredient}}</h3></td>
+              <td colspan="1" class = "info">{{ingredient.get().number}}</td>
+              <td colspan="1" class = "info">{{ingredient.get().unit}}</td>
             </tr>
             {% endfor %}
           </table>
@@ -43,10 +52,20 @@
 
         <!-- Method List -->
         <div class = "Methodlist card">
-          <h2 class = "font2">Methods</h2>
+          <!-- <h2 class = "font2">Methods</h2> -->
           <table>
+            <tr>
+              <td colspan="2" style="border:none;text-align:center;">
+                <span style="font-size:24px;">
+                  <h2 class = "font2 hed">Method</h2>
+                </span>
+              </td>
+            </tr>
             {% for method in methods %}
             <tr class = "font1">
+              <td>
+                <h1>.</h1>
+              </td>
               <td>{{method.get().content}}</td>
             </tr>
             {% endfor %}
@@ -57,7 +76,7 @@
     </div>
 
     <footer>
-      © 2017 Mom's Food
+      <p>© 2017 Mom's Food</p>
     </footer>
   </body>
 
