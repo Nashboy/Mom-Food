@@ -31,10 +31,15 @@ class IndexHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/index.html')
         recipe_list = Food.query().fetch()
-        random_val = random.randint(0, (len(recipe_list)-3))
-        selfood1 = recipe_list[random_val]
-        selfood2 = recipe_list[random_val + 1]
-        selfood3 = recipe_list[random_val + 2]
+        if len(recipe_list) >= 3:
+            random_val = random.randint(0, (len(recipe_list)-3))
+            selfood1 = recipe_list[random_val]
+            selfood2 = recipe_list[random_val + 1]
+            selfood3 = recipe_list[random_val + 2]
+        else:
+            selfood1 = "Coming Soon"
+            selfood2 = "Coming Soon"
+            selfood3 = "Coming Soon"
         temp = {
             "recipe_list": Food.query().fetch(), #all foods
             "featured1": selfood1,
