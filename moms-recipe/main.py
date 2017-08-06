@@ -30,8 +30,16 @@ jinja_environment = jinja2.Environment(loader =
 class IndexHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/index.html')
+        recipe_list = Food.query().fetch()
+        random_val = random.randint(0, (len(recipe_list)-3))
+        selfood1 = recipe_list[random_val]
+        selfood2 = recipe_list[random_val + 1]
+        selfood3 = recipe_list[random_val + 2]
         temp = {
-
+            "recipe_list": Food.query().fetch(), #all foods
+            "featured1": selfood1,
+            "featured2": selfood2,
+            "featured3": selfood3
         }
         self.response.write(template.render(temp))
 
@@ -77,6 +85,25 @@ class ContactHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(temp))
 
+# class FileUpload(webapp2.RequestHandler):
+#
+#     def post(self):
+#
+#         file_upload = self.request.POST.get("file", None)
+#         file_name = file_upload.filename
+#         image = Images(id=file_name, file_name=file_name, blob=file_upload.file.read())
+#         image.put()
+#
+#         self.response.headers[b'Content-Type'] = mimetypes.guess_type(image.file_name)[0]
+#         self.response.write(image.blob)
+#
+# class ImgServe(webapp2.Requesthandler):
+#
+#     def get(self, resource):
+#
+#         image = ndb.Key('Images', resource).get()
+#         self.response.headers[b'Content-Type'] = mimetypes.guess_type(image.file_name)[0]
+#         self.response.write(image.blob)
 # ======== Objects ======
 # List of Foods Objects
 # class Recipe(ndb.Model):
@@ -98,9 +125,9 @@ class Ingredient(ndb.Model):
 class Method(ndb.Model):
     content = ndb.TextProperty(required=True)
 
-class Images(ndb.Model):
-    file_name = ndb.StringProperty(required=True)
-    blob = ndb.BlobProperty(required=True)
+# class Images(ndb.Model):
+#     file_name = ndb.StringProperty(required=True)
+#     blob = ndb.BlobProperty(required=True)
 
 
 # Adding entities To work with
