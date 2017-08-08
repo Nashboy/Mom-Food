@@ -33,9 +33,9 @@ class IndexHandler(webapp2.RequestHandler):
         recipe_list = Food.query().fetch()
         if len(recipe_list) >= 3:
             random_val = random.randint(0, (len(recipe_list)-3))
-            selfood1 = recipe_list[random_val]
-            selfood2 = recipe_list[random_val + 1]
-            selfood3 = recipe_list[random_val + 2]
+            selfood1 = recipe_list[random_val].nameFood
+            selfood2 = recipe_list[random_val + 1].nameFood
+            selfood3 = recipe_list[random_val + 2].nameFood
         else:
             selfood1 = "Coming Soon"
             selfood2 = "Coming Soon"
