@@ -48,6 +48,38 @@ class IndexHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(temp))
 
+class PasswordHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/password.html')
+        temp = {
+
+        }
+        self.response.write(template.render(temp))
+
+    def post(self):
+        entered_password = self.request.get('password')
+
+        if(entered_password == "uniman33"):
+            self.redirect('/write')
+            # response.write(template.render(temp))
+        else:
+            self.redirect('/')
+
+class WriteHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/write.html')
+        temp = {
+
+        }
+        self.response.write(template.render(temp))
+
+    def post(self):
+        template = jinja_environment.get_template('templates/write_response.html')
+        temp = {
+
+        }
+        self.se
+
 class RecipeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/recipe.html')
@@ -57,12 +89,10 @@ class RecipeHandler(webapp2.RequestHandler):
         logging.info(chosen_food_list)
         chosen_food = chosen_food_list[0]
         logging.info(chosen_food)
-
     # def post(self):
-    #     Food.query().filter(Food.nameFood == current_food.nameFood()).get()
+    #Food.query().filter(Food.nameFood == current_food.nameFood()).get()
         temp = {
             "ingredients" : chosen_food.ingredient_list,
-
             "methods" : chosen_food.method_list
         }
         logging.info(temp),
@@ -130,6 +160,7 @@ class Ingredient(ndb.Model):
 class Method(ndb.Model):
     content = ndb.TextProperty(required=True)
 
+
 # class Images(ndb.Model):
 #     file_name = ndb.StringProperty(required=True)
 #     blob = ndb.BlobProperty(required=True)
@@ -173,5 +204,7 @@ app = webapp2.WSGIApplication([
     ('/', IndexHandler),
     ('/food', FoodHandler),
     ('/recipe', RecipeHandler),
+    ('/write', WriteHandler),
+    ('/password', PasswordHandler),
     ('/contact', ContactHandler)
 ], debug=True)

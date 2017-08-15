@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mom's Food</title>
+    <link rel="stylesheet" href="../stylesheets/general.css">
+    <link rel="stylesheet" href="../stylesheets/password.css">
+    <script src="myscripts.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class = "font2">Mom's Food</h1>
+        <ul class = "font1">
+          <li><a href="/">Home</a></li>
+          <li><a href="/food">Foods</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class = "colored">
+      <h2 class = "font2 center">Make A Recipe</h2>
+
+
+      <form class = "center" action="">
+        <h3 class = "font1">What's the name of your dish?</h3>
+          <input type="text" name="Name"><br>
+            <span id = "IngList">
+              <h3 class = "font1">Ingredient Name: <input type="text"></h3>
+            </span>
+              <h3 class = "font1">Ingredient Numb: <span id = "IngList"><input type="text"></span></h3>
+              <h3 class = "font1">Ingredient Unit: <span id = "IngList"><input type="text"></span></h3>
+
+        <button onclick = "addIng()">Add More Ingredients</button>
+
+
+        <div>
+          <h3 class = "font1">What are the Methods?</h3>
+          <textarea rows="10" cols="50" placeholder="write your method!"></textarea>
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+      <script>
+        function addIng() {
+            var x = document.createElement("INPUT");
+            x.setAttribute("type", "text");
+            // x.setAttribute("value", "pswtext");
+            document.getElementById("IngList").appendChild(x);
+        }
+      </script>
+
+  </body>
+</html>
