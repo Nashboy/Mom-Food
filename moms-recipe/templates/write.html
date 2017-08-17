@@ -21,33 +21,87 @@
     <div class = "colored">
       <h2 class = "font2 center">Make A Recipe</h2>
 
+      <button onclick = "addIng()" class = "buttons">Add More Ingredients</button>
 
-      <form class = "center" action="">
+
+
+      <form class = "center" action="" method = "post">
+        <select id = "IngAmount" name = "ingAmount">
+          <option name = "ingAmount" value="1">1</option>
+          <option name = "ingAmount" value="2">2</option>
+          <option name = "ingAmount" value="3">3</option>
+          <option name = "ingAmount" value="4">4</option>
+          <option name = "ingAmount" value="5">5</option>
+          <option name = "ingAmount" value="6">6</option>
+          <option name = "ingAmount" value="7">7</option>
+          <option name = "ingAmount" value="8">8</option>
+          <option name = "ingAmount" value="9">9</option>
+          <option name = "ingAmount" value="10">10</option>
+        </select>
+
         <h3 class = "font1">What's the name of your dish?</h3>
-          <input type="text" name="Name"><br>
-            <span id = "IngList">
-              <h3 class = "font1">Ingredient Name: <input type="text"></h3>
-            </span>
-              <h3 class = "font1">Ingredient Numb: <span id = "IngList"><input type="text"></span></h3>
-              <h3 class = "font1">Ingredient Unit: <span id = "IngList"><input type="text"></span></h3>
+          <input type="text" name="Name" placeholder="Food Name"><br><br><br>
 
-        <button onclick = "addIng()">Add More Ingredients</button>
+
+           <div id = "IngList">
+
+           </div>
+
 
 
         <div>
           <h3 class = "font1">What are the Methods?</h3>
-          <textarea rows="10" cols="50" placeholder="write your method!"></textarea>
+          <textarea rows="10" cols="50" placeholder="write your method!" name = "mContent"></textarea>
         </div>
-        <input type="submit" value="Submit">
+        <input type="submit">
       </form>
     </div>
 
       <script>
         function addIng() {
-            var x = document.createElement("INPUT");
-            x.setAttribute("type", "text");
-            // x.setAttribute("value", "pswtext");
-            document.getElementById("IngList").appendChild(x);
+
+
+            var num = document.getElementById("IngAmount").value;
+            // document.getElementById("demo").innerHTML = num;
+
+            var count;
+            for(count = 1; count <= num; count++) {
+
+              var a = document.createElement("DIV");
+              a.setAttribute("class", "center");
+
+
+              var x = document.createElement("INPUT");
+              x.setAttribute("type", "text");
+              x.setAttribute("name", ("IngName" + count));
+              x.setAttribute("placeholder", ("Ingredient Name" + count));
+
+              var y = document.createElement("INPUT");
+              y.setAttribute("type", "text");
+              y.setAttribute("name", ("IngNum" + count));
+              y.setAttribute("placeholder", ("Ingredient Number" + count));
+
+              var z = document.createElement("INPUT");
+              z.setAttribute("type", "text");
+              z.setAttribute("name", ("IngUnit" + count));
+              z.setAttribute("placeholder", ("Ingredient Unit" + count));
+
+
+              a.appendChild(x);
+              a.appendChild(y);
+              a.appendChild(z);
+
+              document.getElementById("IngList").appendChild(a);
+              // document.getElementById("IngList").appendChild(a);
+            }
+
+
+
+
+
+            // document.getElementById("IngList").appendChild(x);
+            // document.getElementById("IngList").appendChild(y);
+            // document.getElementById("IngList").appendChild(z);
         }
       </script>
 

@@ -74,11 +74,43 @@ class WriteHandler(webapp2.RequestHandler):
         self.response.write(template.render(temp))
 
     def post(self):
-        template = jinja_environment.get_template('templates/write_response.html')
+        logging.info('CONTENT POSTED')
+        name = self.request.get('Name')
+        logging.info(name)
+        logging.info(self.request.get('ingAmount'))
+        igdnt_amount = int(self.request.get('ingAmount'))
+        logging.info(igdnt_amount)
+        ingredients = [0] * igdnt_amount
+        logging.info("Array Size")
+        logging.info(len(ingredients))
+
+        for n in range(0, igdnt_amount):
+            logging.info("Value of N")
+            logging.info(n)
+            logging.info(self.request.get('IngName' + str(n+1)))
+            logging.info(self.request.get('IngNum' + str(n+1)))
+            logging.info(self.request.get('IngUnit' + str(n+1)))
+            ingredientN = self.request.get('IngName' + str(n+1))
+            ingredientNum = int(self.request.get('IngNum' + str(n+1)))
+            ingredientU = self.request.get('IngUnit' + str(n+1))
+            ingredientObj = Ingredient(nameIngredient = ingredientN, number = ingredientNum, unit = ingredientU)
+            ing_key = ingredientObj.put()
+            ingredients[n] = ing_key
+
+
+        contents = self.request.get('mContent')
+        methodObj = Method(content = contents)
+        method_key = methodObj.put()
+        logging.info("Food Object Info")
+        logging.info(name)
+        logging.info(ingredients)
+        logging.info(contents)
+        foodObj = Food(nameFood = name, ingredient_list = ingredients, method_list = [method_key])
+        food_key = foodObj.put()
         temp = {
 
         }
-        self.se
+        self.redirect('/food')
 
 class RecipeHandler(webapp2.RequestHandler):
     def get(self):
